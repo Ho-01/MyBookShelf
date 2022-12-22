@@ -15,8 +15,5 @@
 		<a href="myBookShelf.php">move to myBookShelf</a><br><br>
 		<a href="develop.php">move to develop page</a>
 	</form>
-	<?php
-		echo "Contents here";
-	?>
 </body>
 </html>
