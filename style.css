@@ -1,0 +1,8 @@
+.floor{
+	width: 450px;
+	height: 120px;
+	display: flex;
+	justify-content: center;
+	background-image: url(/img/wood.jpg);
+	border : 9px solid #330019;
+}

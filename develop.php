@@ -51,6 +51,11 @@
 					$("#b2").prev().remove();
 					$("#b2").before("<p></p>");
 					$("#b2").prev().text(value);
+					var a = parseInt($("#b1").prev().text());
+					var b = parseInt($("#b2").prev().text());
+					var result = (b/a*100).toFixed(2);
+					$("progress").attr("value",result);
+					$("label").text("독서 진척도 : "+result+"%");
 				}
 			});
 		});

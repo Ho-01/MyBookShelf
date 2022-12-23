@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- 부트스트랩 css 사용 -->
+		<link rel="stylesheet" href="bootstrap.min.css">
+		<!-- 부트스트랩 js 사용 -->
+		<script type="text/javascript" src="bootstrap.min.js"></script>
 		<link rel="stylesheet" href="style.css">
 		<title>practice</title>
 		<script src="jquery-3.6.1.min.js"></script>
 		<script>
 			$(function(){
 				$("body").css({
-					"background-color" : "#808080"
+					"background-image" : "url(img/bg-wood.jpg)",
+					"display" : "flex",
+					"flex-direction" : "column",
+					"align-items" : "center",
+					"height" : "100%",
+					"overflow" : "auto"
 				});
 				
-				$("section").css({
-					"width" : "650px",
+				$("#shelf1").css({
+					"padding-top" : "150px",
 					"display" : "flex",
-					"flex-direction" : "row",
-					"justify-content" : "space-between"
-				});
-				
-				$("#shelf1 div").css({
-					"width" : "350px",
-					"height" : "120px",
-					"display" : "flex",
-					"justify-content" : "center",
-					"border" : "7px solid brown"
+					"flex-direction" : "column",
+					"height" : "100%"
 				});
 				
 				$("ul").css({
@@ -30,18 +31,27 @@
 					"margin" : "0",
 					"display" : "flex",
 					"flex-direction" : "row",
-					"justify-content" : "space-around",
+					"justify-content" : "flex-start",
 					"align-items" : "flex-end",
-					"width" : "300px",
-					"height" : "120px"
+					"width" : "100%",
+					"height" : "100%"
 				})
 				
 				$(".book").css({
 					"box-sizing" : "border-box",
-					"border" : "1px solid black",
-					"width" : "50px",
-					"height" : "75px",
-					"background-color" : "#008080"
+					"width" : "30px",
+					"height" : "85px",
+					"background-image" : "url(img/book1.jpg)"
+				});
+				
+				
+				
+				$("#add").on({
+					"click" : function(){
+						alert();
+						$("#shelf1").append("<div><ul>생성</ul></div>");
+						$("#shelf1 div:last-child").addClass("floor");
+					},
 				});
 				
 				$(".book").on({
@@ -55,64 +65,69 @@
 							"border" : "1px solid black"
 						});
 					},
-					"click" : function(){
-						$(".book").animate({
-							"width" : "50px",
-							"height" : "75px"
-						})
-						$(this).animate({
-							"width" : "60px",
-							"height" : "85px"
-						},"fast");
-						$("#screen").empty();
-						$("#screen").append("<p>제목 : </p>");
-					},
-				});
-				
-				$("#screen").css({
-					"border" : "1px solid black",
-					"width" : "250px",
-					"height" : "400px"
 				});
 			});
 		</script>
 		<style>
 		</style>
 	</head>
-	<body>
-		<h1>My BookShelf</h1>
+	<body>	
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">title of this book</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<nav class="navbar fixed-top navbar-dark bg-dark">
+			<div class="container-fluid  d-flex flex-column">
+				<a class="navbar-brand">My BookShelf</a>
+				<form class="d-flex" role="search">
+			  		<input class="form-control me-2" style="width: 400px;" type="search" placeholder="Search" aria-label="Search">
+			  		<button class="btn btn-outline-success" type="submit">Search</button>
+					<button id="add" class="btn btn-outline-primary" type="button">Add Floor</button>
+				</form>
+		  	</div>
+		</nav>
 		<section>
 		<div id="shelf1">
-			<div id="floor3">
+			<div class="floor">
 				<ul>
-					<a class="book" href="#" title="book1">book1</a>
-					<a class="book" href="#" title="book2">book2</a>
-					<a class="book" href="#" title="book3">book3</a>
-					<a class="book" href="#" title="book4">book4</a>
-					<a class="book" href="#" title="book5">book5</a>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
 				</ul>
 			</div>
-			<div id="floor2">
+			<div class="floor">
 				<ul>
-					<a class="book" href="#" title="book1">book1</a>
-					<a class="book" href="#" title="book2">book2</a>
-					<a class="book" href="#" title="book3">book3</a>
-					<a class="book" href="#" title="book4">book4</a>
-					<a class="book" href="#" title="book5">book5</a>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
 				</ul>
 			</div>
-			<div id="floor1">
+			<div class="floor">
 				<ul>
-					<a class="book" href="#" title="book1">book1</a>
-					<a class="book" href="#" title="book2">book2</a>
-					<a class="book" href="#" title="book3">book3</a>
-					<a class="book" href="#" title="book4">book4</a>
-					<a class="book" href="#" title="book5">book5</a>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
+					<button type="button" class="btn btn-primary book" data-bs-toggle="modal" data-bs-target="#exampleModal">book1</button>
 				</ul>
 			</div>
-		</div>
-		<div id = "screen">
-			
 		</div>
 		</section>
 	</body>
